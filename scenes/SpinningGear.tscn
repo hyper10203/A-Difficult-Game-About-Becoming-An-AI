@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgear001"]
+
+[ext_resource type="Script" path="res://scripts/SpinningGear.gd" id="1_gear"]
+[ext_resource type="Texture2D" path="res://assets/gears/gear_med_1_32x32.png" id="2_gtex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hub"]
+radius = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_teeth"]
+radius = 15.0
+
+[node name="SpinningGear" type="AnimatableBody2D"]
+sync_to_physics = true
+script = ExtResource("1_gear")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gtex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hub")
+
+[node name="TeethHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeethHitbox"]
+shape = SubResource("CircleShape2D_teeth")
